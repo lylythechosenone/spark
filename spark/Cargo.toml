@@ -1,0 +1,7 @@
+[package]
+name = "spark"
+version = "0.1.0"
+edition = "2021"
+description = "Library for spark package manager"
+
+[dependencies]
