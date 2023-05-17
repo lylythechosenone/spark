@@ -1,0 +1,28 @@
+include github;
+
+package {
+    name: "Test",
+    description: "Description",
+}
+
+channel stable from github.releases("https://www.example.com");
+channel git from github.commits("https://www.example.com");
+
+json Manifest {
+    field: bool,
+}
+
+channel nightly {
+    init {
+        Manifest manifest = http.get("https://my_namifest.url");
+        if manifest.field {
+            debug "Field was true!";
+        }
+        []
+    }
+
+    update polling(1d) {
+        debug "Polled!";
+        []
+    }
+}
