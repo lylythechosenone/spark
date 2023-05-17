@@ -144,4 +144,8 @@ pub enum Token<'a> {
     Float(f64),
     #[regex(r#""([^"]|\\")+""#, |lex| &lex.slice()[1..lex.slice().len() - 1])]
     String(&'a str),
+    #[regex(r"//.*", logos::skip)]
+    #[regex(r"/\*([^*]|\*[^/])*\*/", logos::skip)]
+    #[regex(r"[\s \n\t]+", logos::skip)]
+    Comment,
 }
