@@ -49,7 +49,7 @@ fn parse_float<'a>(lexer: &mut Lexer<'a, Token<'a>>) -> f64 {
     num
 }
 
-#[derive(Logos)]
+#[derive(Logos, Clone, Copy, PartialEq)]
 pub enum Token<'a> {
     // keywords
     #[token("include")]
