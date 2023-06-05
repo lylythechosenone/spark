@@ -5,3 +5,7 @@ edition = "2021"
 description = "The spark package manager"
 
 [dependencies]
+clap = { version = "4.3.0", features = ["cargo"] }
+clap_generate = "3.0.3"
+termion = "2.0.1"
+spark= { path = "./spark" }
