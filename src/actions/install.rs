@@ -21,18 +21,17 @@ pub fn handle(package: &mut String) {
     }
 
     if pkg_path.is_empty() || pkg_channel.is_empty() || pkg_version.is_empty() {
-        println!(
-            "\n\u{2757}\tError: invalid package format: {}",
-            fancyprint::colorize(196, package)
-        );
-        println!("\u{2757}\tError: package format must be: /directory/to/package@channel:version");
-        println!(
-            "\u{2757}\tswitching to default package values ({}@stable:latest)\n",
-            pkg_path
-        );
-        pkg_path    = package.split('@').next().unwrap().to_string();
+        pkg_path = package.split('@').next().unwrap().to_string();
         pkg_channel = "stable".to_string();
         pkg_version = "latest".to_string();
+
+        println!(
+            "{}{}{}",
+            fancyprint::colorize(196, "> Error: invalid package format, defaulting to: "),
+            fancyprint::colorize(93, &pkg_path.as_str()),
+            fancyprint::colorize(93, "@stable:latest"),
+        );
     }
+
 
 }
